@@ -8,7 +8,7 @@ from numpy import save
 hidden = []
 observables = []
 
-f = open("DadosFoneticosOFICIAL.txt","r+")
+f = open("phoneticData.txt","r+")
 
 Lines = f.readlines()
 
