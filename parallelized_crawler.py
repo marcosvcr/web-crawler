@@ -48,11 +48,6 @@ async def main():
                     middlepoint(sem,url,session)
                 )
             )
-            session.close()
-
-async def __aexit__(self, exc_type, exc, tb):
-        # clean up anything you need to clean up
-        webdriver.close()
 
 
 
