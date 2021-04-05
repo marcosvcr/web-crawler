@@ -2,7 +2,7 @@
 Sequencial crawler
 
 Requirements:
-	python 3.7 ou above
+	python 3.7 or above
 	packages:
 	- selenium
 	- pandas
