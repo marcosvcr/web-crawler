@@ -26,3 +26,9 @@ Requirements:
 	
 		python crawler.py <path/to/webdriver>
 	
+
+
+ New Feature*:  scraping the webpage to genarate a phonetic database and traning a model to decode a aphabetic string into a phonetic string Using Hidden Markov Models
+
+  -  Run web_scraping.py to generate the data
+  -  Run hmm.py to generate the model
