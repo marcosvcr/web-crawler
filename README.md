@@ -4,8 +4,11 @@ Sequencial crawler
 Requirements:
 	python 3.7 ou above
 	packages:
-		- selenium
-		- pandas
+	- selenium
+	- pandas
+	- numpy
+	- BeautifulSoup
+	- 
 	webdriver for chrome (https://chromedriver.storage.googleapis.com/index.html?path=90.0.4430.24/)
 	
 	
