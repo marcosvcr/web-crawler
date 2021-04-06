@@ -11,6 +11,7 @@ import threading
 
 threadLocal = threading.local()
 
+
 name_agent = []
 version_agent = []
 locale = []
@@ -45,17 +46,19 @@ def get_info(url):
     driver = get_driver()
     driver.get(url)
     time.sleep(5)
-    version_agent.append(driver.execute_script("return navigator.appVersion;"))
-    name_agent.append(driver.execute_script("return navigator.appName;"))
-    version_agent.append(driver.execute_script("return navigator.appVersion;"))
-    locale.append(driver.execute_script("return Intl.DateTimeFormat().resolvedOptions().timeZone"))
-    platform.append(driver.execute_script("return navigator.platform"))
-    timer.append(driver.execute_script("return new Date()"))
-    driver.close()
-
+    _version_agent = driver.execute_script("return navigator.appVersion;")
+    _name_agent = driver.execute_script("return navigator.appName;")
+    _version_agent = driver.execute_script("return navigator.appVersion;")
+    _locale = driver.execute_script("return Intl.DateTimeFormat().resolvedOptions().timeZone")
+    _platform = driver.execute_script("return navigator.platform")
+    _timer = driver.execute_script("return new Date()")
+    print(_name_agent)
+    print(_version_agent)
+    print(_locale)
+    print(_platform)
+    print(_timer)
+ 
     
 if __name__ == '__main__':
     url = "http://www.portaldalinguaportuguesa.org/index.php?action=fonetica&region=spx&act=list&letter="
     Pool(5).map(get_info,generate_links(url))
-    df = pd.DataFrame({"Name": name_agent, "Version": version_agent, "Location:": locale, "Platform": platform, "Time": timer})
-    df.to_csv("agent_info_parallelized.csv", sep=";")
