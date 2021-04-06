@@ -3,13 +3,11 @@ Sequencial crawler
 
 Requirements:
 	python 3.7 or above
-	packages:
-	- selenium
-	- pandas
-	- numpy
-	- BeautifulSoup
-	- 
-	webdriver for chrome (https://chromedriver.storage.googleapis.com/index.html?path=90.0.4430.24/)
+
+Install the packages:
+	pip3 install -r requirements.txt
+
+	necessary download the webdriver for chrome (https://chromedriver.storage.googleapis.com/index.html?path=90.0.4430.24/)
 	
 	
 	The webpage accessed is http://www.portaldalinguaportuguesa.org/ that includes information about language resources in portuguese.
@@ -28,6 +26,7 @@ Requirements:
 	To run:
 	
 		python crawler.py <path/to/webdriver>
+		python parallelized_crawler.py <path/to/webdriver>
 	
 
 
@@ -35,3 +34,6 @@ Requirements:
 
   -  Run web_scraping.py to generate the data
   -  Run hmm.py to generate the model
+
+
+
