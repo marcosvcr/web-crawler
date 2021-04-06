@@ -24,116 +24,38 @@ def get_driver():
     setattr(threadLocal, 'driver', driver)
   return driver
 
-def get_1():
-    driver = webdriver.Chrome(sys.argv[1])
+
+def generate_links(url):
+    links = []    
     maxpage = 10
     number_visited = 0
     num = 0
-    _response = True
-    while _response == True and number_visited < maxpage:
+
+
+    while number_visited < maxpage:
         letter = random.choice(list(string.ascii_lowercase))
+        number_visited= number_visited + 1 
+        path = url + letter + "&start=" + str(num)
         num = num + 20
-        number_visited= number_visited + 1
-        path = "http://www.portaldalinguaportuguesa.org/index.php?action=fonetica&region=spx&act=list&letter=" + letter + "&start=" + str(num) 
-        print(number_visited, "Accessing", path)
-        driver.get(path)
-        time.sleep(5)
-        version_agent.append(driver.execute_script("return navigator.appVersion;"))
-        name_agent.append(driver.execute_script("return navigator.appName;"))
-        version_agent.append(driver.execute_script("return navigator.appVersion;"))
-        locale.append(driver.execute_script("return Intl.DateTimeFormat().resolvedOptions().timeZone"))
-        platform.append(driver.execute_script("return navigator.platform"))
-        timer.append(driver.execute_script("return new Date()"))
+        links.append(path)
+    return links
 
 
-def get_2():
-    driver = webdriver.Chrome(sys.argv[1])
-    maxpage = 10
-    number_visited = 0
-    num = 0
-    _response = True
-    while _response == True and number_visited < maxpage:
-        letter = random.choice(list(string.ascii_lowercase))
-        num = num + 20
-        number_visited= number_visited + 1
-        path = "http://www.portaldalinguaportuguesa.org/index.php?action=fonetica&region=spx&act=list&letter=" + letter + "&start=" + str(num) 
-        print(number_visited, "Accessing", path)
-        driver.get(path)
-        time.sleep(5)
-        version_agent.append(driver.execute_script("return navigator.appVersion;"))
-        name_agent.append(driver.execute_script("return navigator.appName;"))
-        version_agent.append(driver.execute_script("return navigator.appVersion;"))
-        locale.append(driver.execute_script("return Intl.DateTimeFormat().resolvedOptions().timeZone"))
-        platform.append(driver.execute_script("return navigator.platform"))
-        timer.append(driver.execute_script("return new Date()"))
+def get_info(url):
+    driver = get_driver()
+    driver.get(url)
+    time.sleep(5)
+    version_agent.append(driver.execute_script("return navigator.appVersion;"))
+    name_agent.append(driver.execute_script("return navigator.appName;"))
+    version_agent.append(driver.execute_script("return navigator.appVersion;"))
+    locale.append(driver.execute_script("return Intl.DateTimeFormat().resolvedOptions().timeZone"))
+    platform.append(driver.execute_script("return navigator.platform"))
+    timer.append(driver.execute_script("return new Date()"))
+    driver.close()
 
-
-
-def get_3():
-    driver = webdriver.Chrome(sys.argv[1])
-    maxpage = 10
-    number_visited = 0
-    num = 0
-    _response = True
-    while _response == True and number_visited < maxpage:
-        letter = random.choice(list(string.ascii_lowercase))
-        num = num + 20
-        number_visited= number_visited + 1
-        path = "http://www.portaldalinguaportuguesa.org/index.php?action=fonetica&region=spx&act=list&letter=" + letter + "&start=" + str(num) 
-        print(number_visited, "Accessing", path)
-        driver.get(path)
-        time.sleep(5)
-        version_agent.append(driver.execute_script("return navigator.appVersion;"))
-        name_agent.append(driver.execute_script("return navigator.appName;"))
-        version_agent.append(driver.execute_script("return navigator.appVersion;"))
-        locale.append(driver.execute_script("return Intl.DateTimeFormat().resolvedOptions().timeZone"))
-        platform.append(driver.execute_script("return navigator.platform"))
-        timer.append(driver.execute_script("return new Date()"))
-
-
-def get_4():
-    driver = webdriver.Chrome(sys.argv[1])
-    maxpage = 10
-    number_visited = 0
-    num = 0
-    _response = True
-    while _response == True and number_visited < maxpage:
-        letter = random.choice(list(string.ascii_lowercase))
-        num = num + 20
-        number_visited= number_visited + 1
-        path = "http://www.portaldalinguaportuguesa.org/index.php?action=fonetica&region=spx&act=list&letter=" + letter + "&start=" + str(num) 
-        print(number_visited, "Accessing", path)
-        driver.get(path)
-        time.sleep(5)
-        version_agent.append(driver.execute_script("return navigator.appVersion;"))
-        name_agent.append(driver.execute_script("return navigator.appName;"))
-        version_agent.append(driver.execute_script("return navigator.appVersion;"))
-        locale.append(driver.execute_script("return Intl.DateTimeFormat().resolvedOptions().timeZone"))
-        platform.append(driver.execute_script("return navigator.platform"))
-        timer.append(driver.execute_script("return new Date()"))
-
-
-def get_5():
-    driver = webdriver.Chrome(sys.argv[1])
-    maxpage = 10
-    number_visited = 0
-    num = 0
-    _response = True
-    while _response == True and number_visited < maxpage:
-        letter = random.choice(list(string.ascii_lowercase))
-        num = num + 20
-        number_visited= number_visited + 1
-        path = "http://www.portaldalinguaportuguesa.org/index.php?action=fonetica&region=spx&act=list&letter=" + letter + "&start=" + str(num) 
-        print(number_visited, "Accessing", path)
-        driver.get(path)
-        time.sleep(5)
-        version_agent.append(driver.execute_script("return navigator.appVersion;"))
-        name_agent.append(driver.execute_script("return navigator.appName;"))
-        version_agent.append(driver.execute_script("return navigator.appVersion;"))
-        locale.append(driver.execute_script("return Intl.DateTimeFormat().resolvedOptions().timeZone"))
-        platform.append(driver.execute_script("return navigator.platform"))
-        timer.append(driver.execute_script("return new Date()"))
-
-
+    
 if __name__ == '__main__':
-    ThreadPool(10).map(get_1(),get_2(),get_3(),get_4(),get_5())
+    url = "http://www.portaldalinguaportuguesa.org/index.php?action=fonetica&region=spx&act=list&letter="
+    Pool(5).map(get_info,generate_links(url))
+    df = pd.DataFrame({"Name": name_agent, "Version": version_agent, "Location:": locale, "Platform": platform, "Time": timer})
+    df.to_csv("agent_info_parallelized.csv", sep=";")
