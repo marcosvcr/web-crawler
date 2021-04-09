@@ -27,6 +27,8 @@ Install the packages:
 	
 		python crawler.py <path/to/webdriver> <path/to/list/sites>
 		python parallelized_crawler.py <path/to/webdriver>
+		
+	obs: -1 on the info means the crawler faeiled to access the website 
 	
 
 
