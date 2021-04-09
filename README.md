@@ -12,21 +12,23 @@ Install the packages:
 	
 	The webpage accessed is http://www.portaldalinguaportuguesa.org/ that includes information about language resources in portuguese.
 	
-	the crawler is a program that browses the  phonetical content website and randomly chooses the letters.
+	the crawler is a program that access the website and check whether  it access these API follows:
 	
 	Information Grabbed grabbed:
 	
-		- Application name agent
-		- Version of the application
-		- location
-		- Platform
-		- Time of the browser
+		- Console
+		- Page Transition Event
+		- Location
+		- User Agent
+		- Time
 		
 		
 	To run:
 	
-		python crawler.py <path/to/webdriver>
+		python crawler.py <path/to/webdriver> <path/to/list/sites>
 		python parallelized_crawler.py <path/to/webdriver>
+		
+	obs: -1 on the info means the crawler faeiled to access the website 
 	
 
 
