@@ -10,9 +10,7 @@ Install the packages:
 	necessary download the webdriver for chrome (https://chromedriver.storage.googleapis.com/index.html?path=90.0.4430.24/)
 	
 	
-	The webpage accessed is http://www.portaldalinguaportuguesa.org/ that includes information about language resources in portuguese.
-	
-	the crawler is a program that access the website and check whether  it access these API follows:
+	the crawler is a program that access the website and check whether  it access these API  as follows:
 	
 	Information Grabbed grabbed:
 	
